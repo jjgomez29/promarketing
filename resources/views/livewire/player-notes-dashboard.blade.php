@@ -106,7 +106,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-100">
                         @forelse ($notes as $note)
-                            <tr class="hover:bg-gray-50 transition-colors">
+                            <tr wire:key="note-row-{{ $note->id }}" class="hover:bg-gray-50 transition-colors">
                                 <td class="px-5 py-4 whitespace-nowrap text-sm text-gray-500">
                                     {{ $note->created_at->format('d/m/Y') }}<br>
                                     <span class="text-xs text-gray-400">{{ $note->created_at->format('H:i') }}</span>
@@ -176,7 +176,7 @@
 
     {{-- Modal de confirmacion para eliminar --}}
     @if ($showDeleteModal)
-        <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div wire:key="delete-modal-{{ $noteToDelete }}" class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
             <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
                 {{-- Overlay --}}
                 <div

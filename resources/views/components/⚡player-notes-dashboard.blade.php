@@ -66,6 +66,9 @@ new class extends Component {
 
         $this->noteToDelete = null;
         $this->showDeleteModal = false;
+        $this->resetPage();
+
+        $this->dispatch('note-deleted');
     }
 
     public function render(
