@@ -13,7 +13,22 @@ services:
     networks:
       - promarketing
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+      node:
+        condition: service_completed_successfully
+
+  node:
+    build:
+      context: .
+      dockerfile: docker/node/Dockerfile
+    container_name: promarketing_node
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+      - node_modules:/var/www/node_modules
+    networks:
+      - promarketing
 
   nginx:
     image: nginx:1.27-alpine
@@ -56,3 +71,4 @@ networks:
 
 volumes:
   db_data:
+  node_modules:
