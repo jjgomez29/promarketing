@@ -5,7 +5,7 @@
 
             <form wire:submit="saveNote">
                 <textarea
-                    wire:model="noteContent"
+                    wire:model.live="noteContent"
                     rows="3"
                     maxlength="1000"
                     placeholder="Escribe una observación sobre este jugador..."

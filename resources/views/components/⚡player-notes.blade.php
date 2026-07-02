@@ -31,7 +31,7 @@ new class extends Component {
             content:  $this->noteContent,
         );
 
-        $this->noteContent = '';
+        $this->reset('noteContent');
         $this->resetPage();
         $this->dispatch('note-saved');
     }

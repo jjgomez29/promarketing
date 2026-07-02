@@ -36,9 +36,12 @@ new class extends Component {
             content:  $this->noteContent,
         );
 
-        $this->selectedPlayerId = '';
-        $this->noteContent = '';
+        $this->reset(['selectedPlayerId', 'noteContent']);
+        $this->resetValidation();
         $this->resetPage();
+
+        $this->js('document.getElementById("noteContent").value = ""');
+        $this->js('document.getElementById("player").value = ""');
     }
 
     public function confirmDelete(int $noteId): void
